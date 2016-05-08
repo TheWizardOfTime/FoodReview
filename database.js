@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-// //////////////////////////////////////////////////////////////// //
-//  ThreeDModels Database Code - Running MongoDB with Mongoose ORM  //
-// //////////////////////////////////////////////////////////////// //
+// ////////////////////////////////////////////////////////////// //
+//  FoodReview Database Code - Running MongoDB with Mongoose ORM  //
+// ////////////////////////////////////////////////////////////// //
 
 /*** "mongoose" ORM for MongoDB and "fs" for loading mongoose models ***/
 
@@ -12,8 +12,6 @@ var fs = require('fs');
 var dbURI = 'mongodb://localhost/application_server';
 
 mongoose.connect(dbURI);
-
-
 var db = mongoose.connection;
 
 db.on('error', function ( err ) {
@@ -42,3 +40,6 @@ fs.readdirSync(__dirname + '/models').forEach(function(filename) {
     console.log('loaded '+filename);
   }
 });
+
+module.exports = db;
+/*===END-OF-FILE===*/

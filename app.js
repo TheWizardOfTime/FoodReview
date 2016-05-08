@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+
+// //////////////////////////////////////////////////////////////// //
+//  FoodReview Server Code - Running with Express Server Framework  //
+// //////////////////////////////////////////////////////////////// //
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -24,7 +30,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* have our application connect to the locally running MongoDB instance */
+app.use( function( req , res , next ){
+  req.db = db;
+  next();
+});
+
+/* routing for the application */
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,5 +71,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
 module.exports = app;
+/*===END-OF-FILE===*/

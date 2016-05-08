@@ -1,9 +1,11 @@
-//User information model
+#!/usr/bin/env node
+
+/* FoodReview information model */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var FoodReview = new Schema(
+var FoodReviewSchema = new Schema(
 {	
 		reviewId: { type: String, required:true, unique:true },
 		productId: { type: String, required: true },  
@@ -19,4 +21,5 @@ var FoodReview = new Schema(
 		{collection: 'foodreview'}
 );
 
-module.exports = mongoose.model( 'foodreview' , FoodReview );
+module.exports = mongoose.model( 'foodreview' , FoodReviewSchema );
+/*===END-OF-FILE===*/
